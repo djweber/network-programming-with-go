@@ -22,6 +22,7 @@ func TestDialContext(t *testing.T) {
 		return nil
 	}
 
+	// dial non-routable ip to attempt a timeout
 	conn, err := d.DialContext(ctx, "tcp", "10.0.0.0:80")
 
 	if err == nil {
@@ -32,6 +33,7 @@ func TestDialContext(t *testing.T) {
 	nErr, ok := err.(net.Error)
 
 	if !ok {
+		// unexpected error type
 		t.Error(err)
 	} else {
 		if !nErr.Timeout() {
