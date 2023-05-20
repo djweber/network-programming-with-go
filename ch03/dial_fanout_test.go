@@ -45,7 +45,9 @@ func TestDialContextCancelFanOut(t *testing.T) {
 
     select {
       case <- ctx.Done():
-    case response <- id:
+        t.Log("done")
+      case response <- id:
+        t.Log("response received")
     }
   }
 	
