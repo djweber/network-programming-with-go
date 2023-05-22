@@ -9,7 +9,7 @@ import (
 
 const defaultPingInterval = 30 * time.Second
 
-func Pinger(ctx context.Context, w io.Writer, reset <- chan time.Duration) {
+func Pinger(ctx context.Context, w io.Writer, reset <-chan time.Duration) {
   var interval time.Duration
 
   select {
