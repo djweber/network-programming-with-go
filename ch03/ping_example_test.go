@@ -4,12 +4,12 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"testing"
 	"time"
 )
 
-func ExamplePinger() {
+func TestExamplePinger(t *testing.T) {
   ctx, cancel := context.WithCancel(context.Background())
-
   r, w := io.Pipe()
 
   done := make(chan struct{})
@@ -43,7 +43,7 @@ func ExamplePinger() {
   }
 
   for i, v := range []int64{0, 200, 300, 0, -1, -1, -1} {
-    fmt.Printf("Run %d: \n", i +1) 
+    fmt.Printf("Run! %d: \n", i +1) 
 
     receivePing(time.Duration(v)*time.Millisecond, r)
   }
